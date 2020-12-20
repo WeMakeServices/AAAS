@@ -3,6 +3,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_ipaddr
 from flask_cors import CORS, cross_origin
 import random
+
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
@@ -11,7 +12,8 @@ limiter = Limiter(
     key_func=lambda: request.headers["X-Real-Ip"],
 )
 
-@app.route('/<x>/<y>', methods=['GET'])
+
+@app.route("/<x>/<y>", methods=["GET"])
 @cross_origin(support_credentials=True)
 @limiter.limit("1 per day")
 def add(x, y):
