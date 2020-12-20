@@ -14,6 +14,11 @@ Then you are welcome to use AAAS for your addition needs!
 
 AAAS can be reached at https://add.woohoojin.dev/
 
+# Table of Contents
+
+1. [Usage](#usage-example)
+2. [API Documentation](#api-documentation)
+
 # Usage Example
 
 ```python
