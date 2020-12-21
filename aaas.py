@@ -12,14 +12,31 @@ limiter = Limiter(
     key_func=lambda: request.headers["X-Real-Ip"],
 )
 
+string_number_mapping = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9
+}
+
+def get_mapped_val(val):
+    if val in string_number_mapping:
+        return string_number_mapping[val]
+    
+    return val
 
 @app.route("/<x>/<y>", methods=["GET"])
 @cross_origin(support_credentials=True)
 @limiter.limit("1 per day")
 def add(x, y):
     try:
-        x = int(x)
-        y = int(y)
+        x = int(get_mapped_val(x))
+        y = int(get_mapped_val(y))
     except:
         return "Bad request", 400
 
