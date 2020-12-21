@@ -28,3 +28,7 @@ def add(x, y):
         return "Bad request", 400
 
     return str(x + y), 200
+
+
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0")
