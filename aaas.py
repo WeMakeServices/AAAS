@@ -18,6 +18,9 @@ limiter = Limiter(
 @limiter.limit("1 per day")
 def add(x, y):
     try:
+        if float(x) != int(x) or float(y) != int(y):
+            return "Bad request", 400
+
         x = int(x)
         y = int(y)
     except:
